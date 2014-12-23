@@ -9,7 +9,6 @@ A concurrent garbage collector for C++. Call it periodically from a background t
 * Usable in a real-time thread, because collection can occur in another thread. (Just need to collect often enough, see below)
 * Supports multiple mutator threads. ("Mutator" threads are just your threads that aren't the collector thread.)
 * Coexists peacfully with other forms of C++ memory management.
-* Defers collection until you want to do it.
 * Offers the same conncurrency guarantees as `shared_ptr` (I think, hah)
 * Battle-tested in a real app (I haven't attributed any bugs to the collector, but I make no guarantees!)
 * < 500 lines and dirt simple.
