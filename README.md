@@ -65,21 +65,22 @@ You can shoot yourself in the foot by forgetting about the `owner`. In practice 
 When you want to collect, just call: `Collector::GetInstance().Collect()` periodically from a background thread. If you only call it from the main thread, your code can deadlock. To reduce blocking, you can call `Collector::GetInstance().ProcessEvents()` in the background thread more often than you call `Collect`. My collector thread looks like this:
 
 ```c++
-	while (go) {
+int n = 0;
+while (go) {
 
-		// Update frequently to keep the event
-		// queue from filling up.
-		Collector::GetInstance().ProcessEvents();
+	// Update frequently to keep the event
+	// queue from filling up.
+	Collector::GetInstance().ProcessEvents();
 
-		// Collect occasionally.
-		if (n % 100) {
-			Collector::GetInstance().Collect();
-		}
-
-		// Sleep for .01 seconds.
-		boost::this_thread::sleep(boost::posix_time::millisec(10));
-
+	// Collect occasionally.
+	if (++n % 100) {
+		Collector::GetInstance().Collect();
 	}
+
+	// Sleep for .01 seconds.
+	boost::this_thread::sleep(boost::posix_time::millisec(10));
+
+}
 ```
 
 Enjoy!
