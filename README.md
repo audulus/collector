@@ -7,6 +7,8 @@ A concurrent garbage collector for C++. Call it periodically from a background t
 
 * Unlike reference counting, handles cycles.
 * Usable in a real-time thread, because collection can occur in another thread. (Just need to collect often enough, see below)
+* Supports multiple mutator threads. ("Mutator" threads are just your threads that aren't the collector thread.)
+* Coexists peacfully with other forms of C++ memory management.
 * Defers collection until you want to do it.
 * Offers the same conncurrency guarantees as `shared_ptr` (I think, hah)
 * Battle-tested in a real app (I haven't attributed any bugs to the collector, but I make no guarantees!)
@@ -16,6 +18,7 @@ A concurrent garbage collector for C++. Call it periodically from a background t
 
 * The author is a noob. He's just a graphics programmer with no real experience with GC.
 * Intrusive. You need to derive from `Collectable`. Has to be intrusive so virtual destructors can be called from the collector.
+* Requires a little discipline with use of `RootPtr` and `EdgePtr` smart pointers.
 * Pointer assignment is probably super slow because it puts an event on a queue (I haven't profiled it).
 * Currently, if you don't collect often enough, a fixed-size queue will fill up and you'll block.
 * Collection isn't optimized.
