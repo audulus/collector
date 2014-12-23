@@ -73,7 +73,7 @@ while (go) {
 	Collector::GetInstance().ProcessEvents();
 
 	// Collect occasionally.
-	if (++n % 100) {
+	if ((++n % 100) == 0) {
 		Collector::GetInstance().Collect();
 	}
 
