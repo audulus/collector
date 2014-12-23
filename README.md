@@ -26,7 +26,7 @@ A concurrent garbage collector for C++. Call it periodically from a background t
 
 ### How to Use
 
-Drop `Collector.cpp` and `Collector.hpp` in your project. You'll need also `boost::lockfree` and C++11.
+You'll need [Boost](http://www.boost.org) and C++11. Drop `Collector.cpp` and `Collector.hpp` in your project. 
 
 Let's say you're doing a graph data structure. You might have something like this:
 
