@@ -47,7 +47,7 @@ class Node : public Collectable {
 };
 ```
 
-The basic idea is whenever you are pointing to a `Collectable` on the stack, use a `RootPtr`. For pointers living in the heap, use an `EdgePtr`. (Maybe they should be called `StackPtr` and `HeapPtr`. I just use terms from the GC research papers I can't understand.)
+**The basic idea is whenever you are pointing to a `Collectable` on the stack, use a `RootPtr`. For pointers living in the heap, use an `EdgePtr`**. (Maybe they should be called `StackPtr` and `HeapPtr`. I just use terms from the GC research papers I can't understand.)
 
 To create a collected object in the example, we'd do:
 
