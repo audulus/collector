@@ -8,7 +8,7 @@ A concurrent garbage collector for C++. Call it periodically from a background t
 * Unlike reference counting, handles cycles.
 * Usable in a real-time thread, because collection can occur in another thread. (Just need to collect often enough, see below)
 * Supports multiple mutator threads. ("Mutator" threads are just your threads that aren't the collector thread.)
-* Coexists peacfully with other forms of C++ memory management.
+* Coexists peacefully with other forms of C++ memory management.
 * Offers the same conncurrency guarantees as `shared_ptr` (I think, hah)
 * Battle-tested in a real app (I haven't attributed any bugs to the collector, but I make no guarantees!)
 * < 500 lines and dirt simple.
@@ -57,8 +57,8 @@ RootPtr<Node> node(new Node); // The collector uses the normal new and delete al
 
 There are two constructors for `EdgePtr`:
 
-* `EdgePtr<T>::EdgePtr(Collector* owner)` Creates a NULL `EdgePtr` with an owner.
-* `EdgePtr<T>::EdgePtr(Collector* owner, Collector* p)` Creates an `EdgePtr` from `owner` to `p`.
+* `EdgePtr<T>::EdgePtr(Collected* owner)` Creates a NULL `EdgePtr` with an owner.
+* `EdgePtr<T>::EdgePtr(Collected* owner, const RootPtr<T>& p)` Creates an `EdgePtr` from `owner` to `p`.
 
 You can shoot yourself in the foot by forgetting about the `owner`. In practice I've found it pretty easy to avoid doing so.
 
