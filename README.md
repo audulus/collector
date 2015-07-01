@@ -57,8 +57,8 @@ RootPtr<Node> node(new Node); // The collector uses the normal new and delete al
 
 There are two constructors for `EdgePtr`:
 
-* `EdgePtr<T>::EdgePtr(Collected* owner)` Creates a NULL `EdgePtr` with an owner.
-* `EdgePtr<T>::EdgePtr(Collected* owner, const RootPtr<T>& p)` Creates an `EdgePtr` from `owner` to `p`.
+* `EdgePtr<T>::EdgePtr(Collectable* owner)` Creates a NULL `EdgePtr` with an owner.
+* `EdgePtr<T>::EdgePtr(Collectable* owner, const RootPtr<T>& p)` Creates an `EdgePtr` from `owner` to `p`.
 
 You can shoot yourself in the foot by forgetting about the `owner`. In practice I've found it pretty easy to avoid doing so.
 
